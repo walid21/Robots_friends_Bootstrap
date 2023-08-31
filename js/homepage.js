@@ -26,7 +26,7 @@ class HomePage {
       <div class="card text-bg-light mb-3 cardUser" id ="${this.users[i].id}" style="max-width: 18rem;">
         <div class="card-header">
           <div class="custom-control custom-checkbox ">
-            <input type="checkbox" class="custom-control-input" id="heartCheckbox" >
+            <input type="checkbox" class="custom-control-input checked" id="heartCheckbox" >
               <label class="custom-control-label" for="heartCheckbox">
                 <span class="heart-icon"></span>
               </label>
@@ -48,21 +48,18 @@ class HomePage {
     const coeurs = document.querySelectorAll(".heart-icon");
     console.log(coeurs);
 
+    let i = 0;
     coeurs.forEach((coeur) => {
       coeur.addEventListener("click", (e) => {
         e.stopPropagation();
-        alert("Ouiii");
+        this.userService.patchFavorite(this.users[i].id);
+        console.log(this.users[i].isFavorite);
       });
-      
+
     });
   }
 }
-// document.body.addEventListener("click", (e) => {
-//   if (e.target.classList.contains("heart-icon")) {
-//     alert("coeur");
-//     e.stopPropagation();
-//   }
-// });
+
 const homePage = new HomePage(userService);
 
 homePage.render();
