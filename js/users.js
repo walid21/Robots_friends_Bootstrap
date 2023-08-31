@@ -25,6 +25,11 @@ class UserService {
     const response = await this.client.get(`/${id}` + `?${key}`);
     return response.data;
   }
+
+  async patchFavorite(id) {
+    const response = await this.client.patch(`/toggle-favorite/${id}` + `?${key}`);
+    return response.data;
+  }
 }
 
 export const userService = new UserService(axios.create({ baseURL: apiUrl }));

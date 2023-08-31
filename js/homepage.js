@@ -20,10 +20,11 @@ class HomePage {
       const user = document.createElement("div");
       let randomNumber = Math.floor(Math.random() * 100);
       user.innerHTML = `
+      <a href="/pages/details.html?id=${this.users[i].id}">
       <div class="card text-bg-light mb-3 cardUser" id ="${this.users[i].id}" style="max-width: 18rem;">
         <div class="card-header">
           <div class="custom-control custom-checkbox ">
-            <input type="checkbox" class="custom-control-input" id="heartCheckbox" >
+            <input type="checkbox" class="custom-control-input checked" id="heartCheckbox" >
               <label class="custom-control-label" for="heartCheckbox">
                 <span class="heart-icon"></span>
               </label>
@@ -37,32 +38,24 @@ class HomePage {
             <span>${this.users[i].email}</span>
           </p>
         </div>
-      </div>`;
+      </div></>`;
 
       this.list.innerHTML += user.innerHTML;
     }
 
-    const $cardUsers = document.querySelectorAll(`.cardUser`);
+    const coeurs = document.querySelectorAll(".heart-icon");
+    console.log(coeurs);
     let i = 0;
-    $cardUsers.forEach((element) => {
-      element.addEventListener("click", (e) => {
-        if (e.target.classList.contains("heart-icon")) {
-          e.stopPropagation();
-          return;
-        }
-        console.log(element.id);
-        window.location.href = `/pages/details.html?id=${element.id}`;
+    coeurs.forEach((coeur) => {
+      coeur.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.userService.patchFavorite(this.users[i].id);
+        console.log(this.users[i].isFavorite);
       });
-      i++;
     });
   }
 }
-// document.body.addEventListener("click", (e) => {
-//   if (e.target.classList.contains("heart-icon")) {
-//     alert("coeur");
-//     e.stopPropagation();
-//   }
-// });
+
 const homePage = new HomePage(userService);
 
 homePage.render();
