@@ -20,6 +20,9 @@ class HomePage {
       const user = document.createElement("div");
       let randomNumber = Math.floor(Math.random() * 100);
       user.innerHTML = `
+
+      <a href="/pages/details.html?id=${this.users[i].id}">
+
       <div class="card text-bg-light mb-3 cardUser" id ="${this.users[i].id}" style="max-width: 18rem;">
         <div class="card-header">
           <div class="custom-control custom-checkbox ">
@@ -37,23 +40,20 @@ class HomePage {
             <span>${this.users[i].email}</span>
           </p>
         </div>
-      </div>`;
+      </div></>`;
 
       this.list.innerHTML += user.innerHTML;
     }
 
-    const $cardUsers = document.querySelectorAll(`.cardUser`);
-    let i = 0;
-    $cardUsers.forEach((element) => {
-      element.addEventListener("click", (e) => {
-        if (e.target.classList.contains("heart-icon")) {
-          e.stopPropagation();
-          return;
-        }
-        console.log(element.id);
-        window.location.href = `/pages/details.html?id=${element.id}`;
+    const coeurs = document.querySelectorAll(".heart-icon");
+    console.log(coeurs);
+
+    coeurs.forEach((coeur) => {
+      coeur.addEventListener("click", (e) => {
+        e.stopPropagation();
+        alert("Ouiii");
       });
-      i++;
+      
     });
   }
 }
