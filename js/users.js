@@ -25,6 +25,14 @@ class UserService {
     const response = await this.client.get(`/${id}` + `?${key}`);
     return response.data;
   }
+
+  
+  async fetchFavoris() {
+    const response = await this.client.get(`/favorites` + `?${key}`);
+    // const response = await this.client.get(`https://api-zabibu-training-project.up.railway.app/favorites` + `?${key}`);
+    
+    return response.data;
+  }
 }
 
 export const userService = new UserService(axios.create({ baseURL: apiUrl }));
