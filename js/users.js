@@ -26,11 +26,10 @@ class UserService {
     return response.data;
   }
 
-
   async patchFavorite(id) {
     const response = await this.client.patch(`/toggle-favorite/${id}` + `?${key}`);
+  }
 
-  
   async fetchFavoris() {
     const response = await this.client.get(`/favorites` + `?${key}`);
     // const response = await this.client.get(`https://api-zabibu-training-project.up.railway.app/favorites` + `?${key}`);

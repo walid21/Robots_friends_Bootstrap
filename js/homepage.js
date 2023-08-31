@@ -16,6 +16,7 @@ class HomePage {
 
   async render() {
     this.users = await this.userService.fetchUsers();
+
     for (let i = 0; i < this.users.length; i++) {
       const user = document.createElement("div");
       let randomNumber = Math.floor(Math.random() * 100);
@@ -23,12 +24,12 @@ class HomePage {
 
       <a href="/pages/details.html?id=${this.users[i].id}">
 
-      <div class="card text-bg-light mb-3 cardUser" id ="${this.users[i].id}" style="max-width: 18rem;">
+      <div class="card text-bg-light mb-3 cardUser"  style="max-width: 18rem;">
         <div class="card-header">
           <div class="custom-control custom-checkbox ">
             <input type="checkbox" class="custom-control-input checked" id="heartCheckbox" >
-              <label class="custom-control-label" for="heartCheckbox">
-                <span class="heart-icon"></span>
+              <label class="custom-control-label" for="heartCheckbox" >
+                <span class="heart-icon" id ="${this.users[i].id}"></span>
               </label>
           </div>
 
@@ -48,14 +49,11 @@ class HomePage {
     const coeurs = document.querySelectorAll(".heart-icon");
     console.log(coeurs);
 
-    let i = 0;
     coeurs.forEach((coeur) => {
       coeur.addEventListener("click", (e) => {
         e.stopPropagation();
-        this.userService.patchFavorite(this.users[i].id);
-        console.log(this.users[i].isFavorite);
+        this.newFavoris = this.userService.patchFavorite(coeur.id);
       });
-
     });
   }
 }
