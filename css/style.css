@@ -1,3 +1,12 @@
+
+.pink{
+    background-color: pink;
+}
+
+.pixelsWide50{
+    max-width: 50px;
+}
+
 /* Styles pour la checkbox en forme de cœur */
 .heart-icon::before {
   content: "\2665"; /* Utilisez le code unicode pour le symbole du cœur */
@@ -28,3 +37,4 @@
   opacity: 0;
   pointer-events: none;
 }
+
