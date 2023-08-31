@@ -20,7 +20,9 @@ class HomePage {
       const user = document.createElement("div");
       let randomNumber = Math.floor(Math.random() * 100);
       user.innerHTML = `
+
       <a href="/pages/details.html?id=${this.users[i].id}">
+
       <div class="card text-bg-light mb-3 cardUser" id ="${this.users[i].id}" style="max-width: 18rem;">
         <div class="card-header">
           <div class="custom-control custom-checkbox ">
@@ -51,10 +53,16 @@ class HomePage {
         e.stopPropagation();
         alert("Ouiii");
       });
+      
     });
   }
 }
-
+// document.body.addEventListener("click", (e) => {
+//   if (e.target.classList.contains("heart-icon")) {
+//     alert("coeur");
+//     e.stopPropagation();
+//   }
+// });
 const homePage = new HomePage(userService);
 
 homePage.render();

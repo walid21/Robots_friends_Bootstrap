@@ -1,3 +1,4 @@
+
 .pink{
     background-color: pink;
 }
@@ -5,3 +6,35 @@
 .pixelsWide50{
     max-width: 50px;
 }
+
+/* Styles pour la checkbox en forme de cœur */
+.heart-icon::before {
+  content: "\2665"; /* Utilisez le code unicode pour le symbole du cœur */
+  display: inline-block;
+  font-size: 1.5rem; /* Taille du cœur */
+  color: rgb(255, 255, 255); /* Couleur du cœur */
+  margin-right: 5px; /* Marge à droite pour l'espacement */
+}
+
+/* Styles pour personnaliser la checkbox */
+.custom-control-label::before {
+  border-radius: 50%; /* Faire en sorte que la checkbox soit un cercle */
+  width: 2rem; /* Largeur de la checkbox */
+  height: 2rem; /* Hauteur de la checkbox */
+  background-color: transparent; /* Fond transparent */
+  border: 2px solid #007bff; /* Bordure de la checkbox */
+}
+
+/* Styles pour la checkbox cochée */
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: red; /* Fond bleu lorsque la checkbox est cochée */
+  border-color: black; /* Bordure bleue lorsque la checkbox est cochée */
+}
+
+/* Styles pour masquer la checkbox réelle */
+.custom-control-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
